@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Controle de Estoque - Padaria</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { margin-bottom: 10px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px 8px; }
+    th { background: #f2f2f2; }
+    input[type="number"] { width: 80px; }
+    #baixar { margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <h2>Controle de Estoque - Padaria</h2>
+  <form id="estoqueForm" onsubmit="return false;">
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Local</th>
+          <th>Unidade</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Acquamix refil</td><td>CAFÉ</td><td>litro</td><td><input name="Acquamix refil"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Vinagre de álcool</td><td>CAFÉ</td><td>litro</td><td><input name="Vinagre de álcool"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Creme de leite</td><td>CAFÉ</td><td>kg</td><td><input name="Creme de leite"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Sal grosso</td><td>CAFÉ</td><td>kg</td><td><input name="Sal grosso"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Vinagre de maçã</td><td>CAFÉ</td><td>litro</td><td><input name="Vinagre de maçã"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Nutella</td><td>CAFÉ</td><td>kg</td><td><input name="Nutella"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Chocolate em pó 32%</td><td>CAFÉ</td><td>kg</td><td><input name="Chocolate em pó 32%"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Ovo</td><td>CAFÉ</td><td>unid.</td><td><input name="Ovo"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Desmoldante</td><td>CAFÉ</td><td>unid.</td><td><input name="Desmoldante"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Água sem gás</td><td>CAFÉ</td><td>unid.</td><td><input name="Água sem gás"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Água com gás</td><td>CAFÉ</td><td>unid.</td><td><input name="Água com gás"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Coca-cola zero 200</td><td>CAFÉ</td><td>unid.</td><td><input name="Coca-cola zero 200"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Limão taiti</td><td>CAFÉ</td><td>kg</td><td><input name="Limão taiti"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Coca-cola 200</td><td>CAFÉ</td><td>unid.</td><td><input name="Coca-cola 200"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Bombril</td><td>CAFÉ</td><td>unid.</td><td><input name="Bombril"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Detergente líquido neutro</td><td>CAFÉ</td><td>litro</td><td><input name="Detergente líquido neutro"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Sal</td><td>CAFÉ</td><td>kg</td><td><input name="Sal"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Coca-cola zero</td><td>CAFÉ</td><td>unid.</td><td><input name="Coca-cola zero"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Guaraná Antarctica lata</td><td>CAFÉ</td><td>unid.</td><td><input name="Guaraná Antarctica lata"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Coca-cola lata</td><td>CAFÉ</td><td>unid.</td><td><input name="Coca-cola lata"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Açúcar refinado</td><td>CAFÉ</td><td>kg</td><td><input name="Açúcar refinado"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Limpa alumínio</td><td>CAFÉ</td><td>litro</td><td><input name="Limpa alumínio"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Leite integral café</td><td>CAFÉ</td><td>litro</td><td><input name="Leite integral café"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Flocão de milho</td><td>CAFÉ</td><td>kg</td><td><input name="Flocão de milho"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Extrato de tomate</td><td>CAFÉ</td><td>kg</td><td><input name="Extrato de tomate"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Leite zero lactose</td><td>CAFÉ</td><td>litro</td><td><input name="Leite zero lactose"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Óleo de soja</td><td>CAFÉ</td><td>litro</td><td><input name="Óleo de soja"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Álcool</td><td>CAFÉ</td><td>litro</td><td><input name="Álcool"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Batata</td><td>CAFÉ</td><td>kg</td><td><input name="Batata"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Uva thompson sem semente</td><td>CAFÉ</td><td>kg</td><td><input name="Uva thompson sem semente"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Limpa vidro</td><td>CAFÉ</td><td>litro</td><td><input name="Limpa vidro"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Iogurte natural integral</td><td>CAFÉ</td><td>kg</td><td><input name="Iogurte natural integral"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Ketchup</td><td>CAFÉ</td><td>kg</td><td><input name="Ketchup"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Limão siciliano</td><td>CAFÉ</td><td>kg</td><td><input name="Limão siciliano"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Macarrão penne</td><td>CAFÉ</td><td>kg</td><td><input name="Macarrão penne"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Tomate pelado</td><td>CAFÉ</td><td>kg</td><td><input name="Tomate pelado"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Mostarda</td><td>CAFÉ</td><td>kg</td><td><input name="Mostarda"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Pitaia</td><td>CAFÉ</td><td>kg</td><td><input name="Pitaia"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Avocado</td><td>CAFÉ</td><td>kg</td><td><input name="Avocado"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Esponja amarela</td><td>CAFÉ</td><td>unid.</td><td><input name="Esponja amarela"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Pão baguete</td><td>CAFÉ</td><td>unid.</td><td><input name="Pão baguete"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Filé de peito de frango</td><td>CAFÉ</td><td>kg</td><td><input name="Filé de peito de frango"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Arroz</td><td>CAFÉ</td><td>kg</td><td><input name="Arroz"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Manteiga com sal</td><td>CAFÉ</td><td>kg</td><td><input name="Manteiga com sal"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Papel higiênico</td><td>CAFÉ</td><td>unid.</td><td><input name="Papel higiênico"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Batata palha</td><td>CAFÉ</td><td>kg</td><td><input name="Batata palha"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Ovomaltine em flocos</td><td>CAFÉ</td><td>kg</td><td><input name="Ovomaltine em flocos"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Cupim bovino</td><td>CAFÉ</td><td>kg</td><td><input name="Cupim bovino"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Mel</td><td>CAFÉ</td><td>kg</td><td><input name="Mel"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Filé mignon</td><td>CAFÉ</td><td>kg</td><td><input name="Filé mignon"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Manga tommy</td><td>CAFÉ</td><td>unid.</td><td><input name="Manga tommy"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Detergente líquido alcalino</td><td>CAFÉ</td><td>kg</td><td><input name="Detergente líquido alcalino"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Lemon pepper</td><td>CAFÉ</td><td>kg</td><td><input name="Lemon pepper"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Mate tostado</td><td>CAFÉ</td><td>kg</td><td><input name="Mate tostado"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Orange pepper</td><td>CAFÉ</td><td>kg</td><td><input name="Orange pepper"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Pimenta preta em grãos</td><td>CAFÉ</td><td>kg</td><td><input name="Pimenta preta em grãos"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Picles</td><td>CAFÉ</td><td>unid.</td><td><input name="Picles"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Broto</td><td>CAFÉ</td><td>kg</td><td><input name="Broto"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Xarope de grenadine</td><td>CAFÉ</td><td>litro</td><td><input name="Xarope de grenadine"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Xarope de maçã verde</td><td>CAFÉ</td><td>litro</td><td><input name="Xarope de maçã verde"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Xarope de limão siciliano</td><td>CAFÉ</td><td>litro</td><td><input name="Xarope de limão siciliano"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Filtro de papel V60 02</td><td>CAFÉ</td><td>unid.</td><td><input name="Filtro de papel V60 02"  type="number" min="0" value="0"></td></tr>
+        <!-- Continue com os demais itens... -->
+        <!-- DESCARTÁVEIS -->
+        <tr><td>Embalagem black kraft 350ml</td><td>DESCARTÁVEIS</td><td>unid.</td><td><input name="Embalagem black kraft 350ml"  type="number" min="0" value="0"></td></tr>
+        <tr><td>Embalagem éclair</td><td>DESCARTÁVEIS</td><td>unid.</td><td><input name="Embalagem éclair"  type="number" min="0" value="0"></td></tr>
+        <!-- Repita até todos os itens desejados -->
+      </tbody>
+    </table>
+    <button id="baixar" type="button" onclick="gerarExcel()">Baixar Estoque Excel</button>
+  </form>
+
+  <script>
+    function gerarExcel() {
+      const rows = [];
+      // Cabeçalho
+      rows.push(["Produto", "Local", "Unidade", "Quantidade"]);
+      // Para cada linha da tabela
+      const table = document.querySelector("tbody");
+      for (let tr of table.rows) {
+        let produto = tr.cells[0].innerText.trim();
+        let local = tr.cells[1].innerText.trim();
+        let unidade = tr.cells[2].innerText.trim();
+        let qtde = tr.cells[3].querySelector('input').value;
+        rows.push([produto, local, unidade, qtde]);
+      }
+      // Gera planilha excel usando SheetJS
+      var wb = XLSX.utils.book_new();
+      var ws = XLSX.utils.aoa_to_sheet(rows);
+      XLSX.utils.book_append_sheet(wb, ws, "Estoque");
+      XLSX.writeFile(wb, "estoque_padaria.xlsx");
+    }
+  </script>
+</body>
+</html>
